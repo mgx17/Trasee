@@ -1,0 +1,322 @@
+
+<!doctype html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.101.0">
+    <title>Profil de Traseu</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sticky-footer-navbar/">
+
+<meta name="theme-color" content="#712cf9">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+<style>
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+main > .container {
+  padding: 60px 15px 0;
+}
+</style>
+  </head>
+  <body class="d-flex flex-column h-100">
+    
+<header>
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Traseu</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+          </li>
+          <!--li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li-->
+        </ul>
+        <!--form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form-->
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Profil de traseu</h1>
+    <p class="lead">Se va folosi <code class="small">calea</code> unui fișier GPX.</p>    
+  </div>
+  <div class="container">
+    <div class="col-12">
+        <form action="#">
+            <div class="row">
+                <div class="col-12 form-check">
+                    <label for="url">Linkul unui fișier GPX:</label>
+                    <div class="input-group-text">
+                        <span class="input-group-text">URL</span>
+                        <input type="url" class="form-control" id="url" placeholder="URL-ul unui GPX">
+                    </div>
+                </div>
+                <div class="col-12 form-check">
+                  <button id="display" value="0" class="btn btn-success display" onclick="return false;">Afișează</button>
+                </div>
+                <div class="col-12 form-check">
+                    <table class="table statistica">
+                        <thead>
+                            <tr>
+                                <th>Distanța</th>
+                                <th>Alt. Minimă</th>
+                                <th>Alt. Maximă</th>
+                                <th>Urcare</th>
+                                <th>Coborâre</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="distanta"></td>
+                                <td id="altitudineMinima"></td>
+                                <td id="altitudineMaxima"></td>
+                                <td id="urcare"></td>
+                                <td id="coborare"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 form-check">
+                    Graficul traseului...
+                </div>
+            </div>
+        </form>
+    </div>
+  </div>
+</main>
+
+<footer class="footer mt-auto py-3 bg-light">
+  <div class="container">
+    <span class="text-muted">Trasee magice.</span>
+  </div>
+</footer>
+
+<script src="//cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+
+function degreesToRadians(degrees) {
+    return degrees * Math.PI / 180;
+}
+
+function distance(latStart, lonStart, latEnd, lonEnd) {
+    //distanceInKmBetweenEarthCoordinates
+    const earthRadiusKm = 6371;
+    let dLat = degreesToRadians(latEnd-latStart);
+    let dLon = degreesToRadians(lonEnd-lonStart);
+
+    latStart = degreesToRadians(latStart);
+    latEnd = degreesToRadians(latEnd);
+
+    let a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latStart) * Math.cos(latEnd); 
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+    return earthRadiusKm * c;
+}
+function distantaPuncte(punctStart, punctEnd){
+    return distance(punctStart.lat, punctStart.lon, punctEnd.lat, punctEnd.lon);
+}
+
+function onChangeURL(){
+if($('#url').val()==""){
+  $('#display').removeClass('visible');
+  $('#display').addClass('invisible');
+  $('table.statistica').addClass('invisible');
+  $('table.statistica').removeClass('visible');
+}else{
+  $('#display').removeClass('invisible');
+  $('#display').addClass('visible');
+  $('table.statistica').addClass('visible');
+  $('table.statistica').removeClass('invisible');
+}
+}
+
+onChangeURL();
+
+$('#url').change(function(){
+  onChangeURL(); 
+}).keyup(function(){
+  onChangeURL();
+});
+
+$('#display').click(function(){
+  $('#distanta').text();
+  $('#altitudineMinima').text();
+  $('#altitudineMaxima').text();
+  $('#urcare').text();
+  $('#coborare').text();  
+  procesareCursa();
+  //console.log($('#display:checked').val());
+});
+class Punct{
+        constructor(xmlPoint){
+            this.lat=$(xmlPoint).attr("lat");
+            this.lon=$(xmlPoint).attr("lon");
+            this.altitudine=parseFloat($(xmlPoint).find("ele").text());
+        }
+    }
+    class Cursa{
+        constructor(){
+            this.altitudineMinima=0;
+            this.altitudineMaxima=0;
+            this.distanta=0;
+            this.urcare=0;
+            this.coborare=0;
+        }
+        Print(){
+            console.log(`Distanța: ${(this.distanta).toFixed(3)}, Urcare: ${(this.urcare).toFixed(2)}, Coborâre: ${(this.coborare).toFixed(2)}, Altitudine Minimă: ${(this.altitudineMinima).toFixed(2)}, Altitudine Maximă: ${(this.altitudineMaxima).toFixed(2)};`);
+            $('#distanta').text(this.distanta.toFixed(3)+ ' km');
+            $('#altitudineMinima').text(this.altitudineMinima.toFixed(2) + ' m');
+            $('#altitudineMaxima').text(this.altitudineMaxima.toFixed(2) + ' m');
+            $('#urcare').text(this.urcare.toFixed(2) + ' m');
+            $('#coborare').text(this.coborare.toFixed(2) + ' m');
+        }
+    }
+
+    class Segment{
+        constructor(urcare=true,start=0,end=0,diferenta=0){
+            this.trend=new Array(10).forEach(function(value){value=0});
+            this.urcare=urcare;
+            this.distanta=0;
+            this.diferentaAltitudine=diferenta;
+            this.kmStart=start;
+            this.kmEnd=end;
+        }
+        Print(){
+            console.log(`KM: ${this.kmStart.toFixed(2)}-${this.kmEnd.toFixed(2)} (${this.distanta.toFixed(2)}), Altitudine: ${this.diferentaAltitudine.toFixed()}`);
+        }
+    }
+    function procesareCursa(){
+    //const urlGPX = "/traseu/BUR22-LsR-47.gpx";
+    const urlGPX = "http://apps.go.ro:82/Traseu/Details?url="+$('#url').val();
+    console.log(urlGPX);
+    let p,pts;
+    const cursa = new Cursa();
+    const gpx=$.get(urlGPX, function(data){
+        const puncte = $(data).find("trkpt");
+        console.log('Puncte'+puncte.length);
+        //let distanta = 0;
+        //let urcare=0;
+        //let coborare=0;
+        let punctStart = new Punct(puncte[0]);
+        cursa.altitudineMinima=punctStart.altitudine;
+        cursa.altitudineMaxima=punctStart.altitudine;
+        let segment = new Segment();
+        for(const punct of puncte){
+            const punctEnd=new Punct(punct);
+            if(cursa.altitudineMinima>punctEnd.altitudine)cursa.altitudineMinima=punctEnd.altitudine;
+            if(cursa.altitudineMaxima<punctEnd.altitudine)cursa.altitudineMaxima=punctEnd.altitudine;
+            let distantaSegment = distantaPuncte(punctStart,punctEnd);
+            cursa.distanta+=distantaSegment;
+            const diferentaAltitudine=punctEnd.altitudine-punctStart.altitudine;
+            if(diferentaAltitudine<0){
+                //coborare+=diferentaAltitudine;
+                cursa.coborare+=diferentaAltitudine;
+                if(!segment.urcare){
+                    segment.diferentaAltitudine+=diferentaAltitudine;
+                    segment.distanta+=distantaSegment;
+                }else{
+                    segment.kmEnd=cursa.distanta;
+                    //segment.Print();
+                    segment=new Segment(true,cursa.distanta,cursa.distanta,diferentaAltitudine);
+                }
+            }else{
+                //urcare+=diferentaAltitudine;
+                cursa.urcare+=diferentaAltitudine;
+                if(segment.urcare){
+                    segment.diferentaAltitudine+=diferentaAltitudine;
+                    segment.distanta+=distantaSegment;
+                }else{
+                    segment.kmEnd=cursa.distanta;
+                    //segment.Print();
+                    segment=new Segment(false,cursa.distanta,cursa.distanta,diferentaAltitudine);
+                }
+            }
+            //console.log(`Distanța: ${segment}, Diferență de nivel: ${diferentaAltitudine};`);
+            punctStart=new Punct(punct);
+        }
+        //pts=puncte;
+        //console.log(`Distanța: ${distanta}, Urcare: ${urcare}, Coborâre: ${coborare};`);
+        cursa.Print();
+    });
+    }
+</script>
+</body>
+</html>
